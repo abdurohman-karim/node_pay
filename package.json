@@ -1,0 +1,25 @@
+{
+  "name": "node_pay",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "run:project"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abdurohman-karim/node_pay.git"
+  },
+  "keywords": [
+    "node_pay"
+  ],
+  "author": "abdurohman-karim",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abdurohman-karim/node_pay/issues"
+  },
+  "homepage": "https://github.com/abdurohman-karim/node_pay#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}
