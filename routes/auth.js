@@ -58,7 +58,7 @@ router.post('/login', [
         if (!isMatch) return res.status(400).json(responseController.errorResponse('Incorrect password'));
 
         const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-        res.json({ token });
+        res.json(responseController.successResponse('Login successful', { token }));
     } catch (err) {
         res.status(500).json(responseController.errorResponse('Server error'));
     }
