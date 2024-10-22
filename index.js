@@ -12,12 +12,12 @@ app.use('/api', authRoutes);
 app.use('/api/transactions', transactionRoutes);
 
 // Миграции базы данных
-sequelize.sync({ force: false })  // Создание таблиц на основе моделей
+sequelize.sync({ alter: true })  // Это обновит структуру таблиц без удаления данных
     .then(() => {
-        console.log('Database & tables created!');
+        console.log('Database synced successfully');
     })
     .catch(err => {
-        console.error('Unable to sync the database:', err);
+        console.error('Error syncing database:', err);
     });
 
 // Запуск сервера
