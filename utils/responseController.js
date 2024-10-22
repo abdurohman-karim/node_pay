@@ -3,8 +3,8 @@ module.exports.successResponse = function successResponse(message, data) {
         success: true,
         result: {
             data: data || null,
-            message: message.toString() || 'OK',
-        },
+            message: message?.toString() ?? 'OK',
+        }
     }
 }
 module.exports.errorResponse = function errorResponse(message) {
@@ -12,7 +12,7 @@ module.exports.errorResponse = function errorResponse(message) {
         success: false,
         result: {
             data: null,
-            message: message.toString() || 'Error',
+            message: message?.toString() ?? 'Error',
         }
     }
 }
