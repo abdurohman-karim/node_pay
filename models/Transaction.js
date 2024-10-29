@@ -15,6 +15,10 @@ const Transaction = sequelize.define('Transaction', {
     },
     otp: {
         type: DataTypes.STRING,
+    },
+    userId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
     }
 }, {});
 

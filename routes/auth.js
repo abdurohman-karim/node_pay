@@ -20,17 +20,17 @@ router.post('/register', [
     const errors = validationResult(req);
     if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
 
-    const { username, email, password, first_name, last_name } = req.body;
+    const { name, email, password, first_name, last_name } = req.body;
 
     try {
-        const existingUser = await User.findOne({ where: { [Op.or]: [{ username }, { email }] } });
+        const existingUser = await User.findOne({ where: { [Op.or]: [{ name }, { email }] } });
 
         if (existingUser) {
             return res.status(200).json(responseController.errorResponse('User already exists'));
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
-        const user = await User.create({ username, email, password: hashedPassword, first_name, last_name });
+        const user = await User.create({ name, email, password: hashedPassword, first_name, last_name });
 
         // Create and assign a token
         const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
