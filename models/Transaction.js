@@ -16,6 +16,14 @@ const Transaction = sequelize.define('Transaction', {
     otp: {
         type: DataTypes.STRING,
     },
+    type: {
+        type: DataTypes.ENUM('face', 'basic'),
+        allowNull: false,
+    },
+    image_path: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
     userId: {
         type: DataTypes.INTEGER,
         allowNull: false,

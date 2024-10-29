@@ -105,7 +105,7 @@ router.post('/face', authMiddleware, [
 
     try {
         // Попытка создания транзакции
-        const transaction = await Transaction.create({ amount, description, otp, userId: req.user.userId });
+        const transaction = await Transaction.create({ amount, description, otp, type: 'face', image_path, userId: req.user.userId });
 
         // Записываем лог успешной транзакции
         fs.appendFile(logFilePath, `Success: ${logEntry}`, (err) => {
@@ -113,7 +113,7 @@ router.post('/face', authMiddleware, [
         });
 
         res.status(200).json(responseController.successResponse('Transaction created successfully', {
-            transaction_id: transaction.id, status: transaction.status, otp_code: otp
+            transaction_id: transaction.id, status: transaction.status, otp_code: otp, type: transaction.type
         }));
     } catch (err) {
         // Записываем лог ошибки сервера
